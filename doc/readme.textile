@@ -1,9 +1,0 @@
-h1. Savon Handsoap Shootout
-
-This is a technical Article on the two popular SOAP-Clients Savon (http://github.com/rubiii/savon) and Handsoap (http://github.com/unwire/handsoap/).
-
-If you want to execute the examples, there are some rake-tasks for your convenience.
-
-h2. Tasks
-
-bc. $ rake install_gems

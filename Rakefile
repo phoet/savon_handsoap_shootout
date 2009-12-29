@@ -13,7 +13,7 @@ end
 
 task :doc => :install_gems do
   Dir.mkdir('_site') unless File.exists?('_site')
-  Dir.glob('doc/*.textile').each do |file|
+  Dir.glob('*.textile').each do |file|
     p text = File.readlines(file)
     p html = RedCloth.new(text.join).to_html
     fname = File.basename(file, '.textile')
