@@ -7,3 +7,7 @@ If you want to execute the examples, there are some rake-tasks for your convenie
 h2. Tasks
 
 bc. $ rake install_gems
+
+(you might execute this with _sudo_)
+
+bc. $ rake create_doc
