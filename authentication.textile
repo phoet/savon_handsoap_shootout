@@ -1,0 +1,57 @@
+h2. Authentication
+
+p. Both libraries provide support multiple authentication-protocols. While handsoap's authentication-support ist more low-level, savon provides an API for it. 
+
+h3. WSSE-authentication
+
+p. As you might expect, the handsoap-way for this aspect is to implement a callback-method for the document-creation. With Savon you can attach your credentials using a WSSE-object inside your request-block. Compare the two implementations:
+
+bc.. def on_create_document(doc)
+  doc.alias 's', "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+  header = doc.find("Header")
+  header.add "s:Security" do |s|
+    s.set_attr "env:mustUnderstand", "0"
+    s.add "s:Username", @@username
+    [...]
+  end
+end
+
+response = client.get_bank do |soap, wsse|
+  wsse.username = @@username
+  [...]
+end
+
+h3. HTTP-authentication
+
+p. The same approach is used by handsoap to offer HTTP-authentication, while savon currently "lacks support":http://github.com/rubiii/savon/issues#issue/15 for this simple task.
+
+bc.. def on_after_create_http_request(http_request)
+    http_request.set_auth @@username, @@password
+  end
+
+h3. SSL-support
+
+p. At the time of writing only savon supports SSL-authentication directly. This is achieved by passing a configuration-hash to the _Savon::Client_:
+
+bc.. client = Savon::Client.new "http://example.com/UserService?wsdl", :ssl => {
+  :client_cert => OpenSSL::X509::Certificate.new(File.read("client_cert.pem")),
+  :client_key => OpenSSL::PKey::RSA.new(File.read("client_key.pem"), "password if one exists"),
+  :ca_file => "cacert.pem",
+  :verify  => OpenSSL::SSL::VERIFY_PEER
+}
+
+p. While the "handsoap-documentation":http://wiki.github.com/unwire/handsoap/authentication states that support for SSL is not yet implemented, there might be the chance to enable it through the use of the http-diver.
+
+h3. Sessions/Cookies
+
+p. Handsoap enables you configure the http-driver, which is curb by default. This driver is also able to work with cookies:
+
+bc.. def http_driver_instance
+  unless @driver_instance
+    @driver_instance = super
+    @driver_instance.enable_cookies = true
+  end
+  @driver_instance
+end
+
+

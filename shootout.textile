@@ -4,90 +4,26 @@ p. Looking into "The Ruby Toolbox":http://ruby-toolbox.com/ there are currently 
 
 h2. Scope
 
-p. This article wont cover all facets of both library. It concentrates on the featers that are relevant for integrating a Ruby-SOAP-client into our particular SOA-platform. That platform is commonly based on Java-SOAP-frameworks such as "CXF":http://cxf.apache.org/ and "Axis":http://ws.apache.org/axis/ providing interfaces to internal business-logic.
+p. This article won't cover all facets of both libraries. It concentrates on the features that are relevant for integrating a Ruby-SOAP-client into our particular SOA-platform. That platform is commonly based on Java-SOAP-frameworks such as "CXF":http://cxf.apache.org/ and "Axis":http://ws.apache.org/axis/ providing interfaces to internal business-logic.
 
 p. Since this is not a complete feature-list, it should show you at least how to work with the APIs and which client might be the best choice for yourself.
 
 h2. Features
 
-p. The requirements the SOAP-client should meet are clear. Having lots of Java-Guys around, there was no great focus on things like API-design or Ruby-magic, the client should *just work*! Living in a Java-environment, it would be a great plus for the SOAP-client to integrate with "JRuby":http://jruby.org/ _smoothly_ (experience reminded us, a lot of Ruby-libraries lack JRuby support).
+p. The requirements the SOAP-client should meet are clear. Having lots of Java-Guys around, there was no great focus on things like API-design or Ruby-magic, the client should *just work*! Living in a Java-environment, it would be a great plus for the SOAP-client to integrate with "JRuby":http://jruby.org/ _smoothly_. Since a lot of ruby-libraries lack support for JRuby, one has to monkey-patch a lot of code to make it work with the Java-Runtime.
 
 h2. Examples
 
-p. For the examples we refer to SOAP-services, that can be used on a free and public basis. This enables you to run all the examples by yourself.
-
-p. The two clients have different approaches on how to get things done. While Handsoap is using an oldschool inheritance-style definition
-
-bc.. class HandsoapBankCode < Handsoap::Service
-  
-  # set the endpoint
-  endpoint "some_uri"
-
-  def on_create_document(doc)
-    doc.alias "tns", "some_namespace"
-  end
-
-  def on_response_document(doc)
-    doc.add_namespace "ns1", "some_namespace"
-  end
-
-  [...]
-end
-
-p. savon-clients are just a kind of wrapper around a WSDL 
-
-bc.. client = Savon::Client.new "some_uri"
-
-p. of the _Savon::Client_ class. 
-
-p. While inheritance is a base concept of object-oriented-programming, we usually try to avoid it. We don't want to be stuck on the API of the _Handsoap::Service_ class, so we would usually wrap things up into some other Class or Module, creating more code than neccessary. 
-
-p. The proxy-style-client of savon is less code and provides the flexibility we want. Especially when it comes to terms of usage!
-
-p. Using "rspec":http://rspec.info/ to test the expected bahavior of the clients 
-
-bc.. describe "Savon" do
-  it "should return the corrent zip code for a given bank" do
-    zip_code = Shootout::SavonBankCode.zip_code @bank_code
-    zip_code.should eql @zip_code
-  end
-end
-
-describe "Handsoap" do
-  it "should return the corrent zip code for a given bank" do
-    zip_code = Shootout::HandsoapBankCode.zip_code @bank_code
-    zip_code.should eql @zip_code
-  end
-end
-
-p. results in two nearly identical specs for getting the expected _zip_code_ of a client-implementation.
-
-p. Compared to the spec, the code of the two _zip_code_ methods differs a great deal. The task at hand is to call the _getBank_ method of the "SOAP-endpoint":http://www.thomas-bayer.com/axis2/services/BLZService?wsdl providing a _bank_code_ parameter and extracint the _zip_code_ value of the response. 
-
-p. Using the handsoap class defined above, sinding the _invoke()_ message to the _Handsoap::Service_
-
-bc.. def zip_code(bank_code)
-  response = invoke("tns:getBank") do |message|
-    message.add "tns:blz", bank_code
-  end
-  (response/"//ns1:details/ns1:plz").first.to_s
-end
-
-p. and assign our parameter in the block, which yields a "SOAP-message-object":http://github.com/unwire/handsoap/blob/master/lib/handsoap/xml_mason.rb, will do the job. The resulting xml-document is parsed using "nokogiri":http://github.com/tenderlove/nokogiri X-Path notation ???.
-
-p. Savons proxy-client on the other hand is dynamic and can be accessed directly with the name of the SOAP-method and a block. The block yields a "SOAP-request-object":http://github.com/rubiii/savon/blob/master/lib/savon/soap.rb for setting the payload or tweaking parameters like the SOAP-header. Converting the response to a hash is a simple way to access the desired result:
-
-wann wird der call abgeschickt?
-
-bc.. class SavonBankCode
-  def self.zip_code(bank_code)
-    client = Savon::Client.new Shootout.endpoints[:bank_code][:uri]
-    response = client.get_bank { |soap| soap.body = { "wsdl:blz" => bank_code } }
-    response.to_hash[:details][:plz]
-  end
-end
+p. For the examples we refer to public SOAP-services, that can be used on an open basis. This enables everyone to run the examples by themselves.
 
 p. All the examples seen here can be cloned/downloaded from "github":http://github.com/rubiii/ruby_soap_client_library_shootout/.
+
+* "calling a service":calling_a_service.html
+* "accessing a wsdl":accessing_a_wsdl.html
+* "errors":errors.html
+* "autentication":authentication.html
+
+- benchmark (wsdl-parsing an und aus)
 
 h2. JRuby
 

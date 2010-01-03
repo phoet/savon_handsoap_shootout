@@ -1,0 +1,49 @@
+h2. Accessing a WSDL
+
+p. Both clients provide an interface to work with a wsdl. While handsoap wsdl-support is hidden in some helper-class, wsdls are a first-class citizen in savon. The code for printing out the available SOAP-actions looks like this:
+
+bc.. # using handsoap
+require "handsoap/parser"
+wsdl = Handsoap::Parser::Wsdl.read(@wsdl_uri)
+wsdl.bindings.each {|binding| binding.actions.each{|action| p action.name }}
+
+# using savon
+p Savon::Client.new("some_wsdl").wsdl.soap_actions
+
+p. The handsoap-parser-class is part of the Rails generator. The generator can be used for creating a Handsoap service class skeleton and tests.
+
+bc.. $ script/generate handsoap http://www.thomas-bayer.com/axis2/services/BLZService?wsdl
+
+p. This call will output something like:
+
+bc..      exists  app
+      exists  app/models
+      create  app/models/blz_service.rb
+      exists  test
+      exists  test/integration
+      create  test/integration/blz_service_test.rb
+----
+Endpoints in WSDL
+  You should copy these to the appropriate environment files.
+  (Eg. `config/environments/*.rb`)
+----
+# wsdl: http://www.thomas-bayer.com/axis2/services/BLZService?wsdl
+BLZ_SERVICE_ENDPOINT = {
+  :uri => 'http://www.thomas-bayer.com:80/axis2/services/BLZService',
+  :version => 2
+}
+----
+
+p. The skeleton provides method-stubs, for adding request-parameters and result-parsing:
+
+bc.. def get_bank
+  soap_action = ''
+  response = invoke('tns:getBank', soap_action) do |message|
+    raise "TODO"
+  end
+end
+
+
+
+
+
