@@ -1,4 +1,4 @@
-h1. savon Handsoap shootout
+h1. Savon Handsoap shootout
 
 p. Looking into "The Ruby Toolbox":http://ruby-toolbox.com/ there are currently two popuplar "SOAP-client-libraries":http://ruby-toolbox.com/ available. In this short article I am going to crunch the candidates "savon":http://github.com/rubiii/savon, which is currently the most "popular" library, and "Handsoap":http://github.com/unwire/handsoap/ which follows short after. Both are open-source-projects hosted on "github":http://github.com/.
 
@@ -18,18 +18,13 @@ p. For the examples we refer to public SOAP-services, that can be used on an ope
 
 p. All the examples seen here can be cloned/downloaded from "github":http://github.com/rubiii/ruby_soap_client_library_shootout/.
 
+h2. Chapters
+
 * "calling a service":calling_a_service.html
 * "accessing a wsdl":accessing_a_wsdl.html
 * "errors":errors.html
-* "autentication":authentication.html
-
-- benchmark (wsdl-parsing an und aus)
-
-h2. JRuby
-
-h2. Good
-
-h2. Bad
-
-h2. Conclusion
+* "authentication":authentication.html
+* "benchmark":benchmark.html
+* "jruby":jruby.html
+* "conclusion":conclusion.html
 

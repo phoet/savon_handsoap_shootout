@@ -1,13 +1,27 @@
 h1. Savon Handsoap Shootout
 
-This is a technical Article on the two popular SOAP-Clients Savon (http://github.com/rubiii/savon) and Handsoap (http://github.com/unwire/handsoap/).
+p. This is a technical Article on the two popular SOAP-Clients Savon (http://github.com/rubiii/savon) and Handsoap (http://github.com/unwire/handsoap/).
 
-If you want to execute the examples, there are some rake-tasks for your convenience.
+p. If you want to execute the examples, there are some rake-tasks for your convenience.
 
-h2. Tasks
+h2. Which versions are being compared?
 
-bc. $ rake install_gems
+p. We try to always compare the latest versions of both libraries. Right now we use: *Savon 0.6.8* and *Handsoap 1.1.4*.
 
-(you might execute this with _sudo_)
+h2. Getting started
 
-bc. $ rake create_doc
+p. "Download":http://github.com/phoet/savon_handsoap_shootout/archives/master or clone the repository via:
+
+bc. git clone git://github.com/phoet/savon_handsoap_shootout.git
+
+h2. How to use
+
+p. Run "rake" to execute the specifications. The default rake task executing the specs will exit unless all public SOAP services are available. Look at the examples comparing the use of Savon and Handsoap in the "lib/shootout" folder.
+
+h2. How to help
+
+p. If you own or know about a public SOAP service that we could use, please get in touch.
+
+h2. Problems?
+
+p. In case of a LoadError, please make sure *Rubygems* is used (see http://gist.github.com/54177).

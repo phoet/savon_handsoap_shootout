@@ -42,16 +42,5 @@ bc.. client = Savon::Client.new "http://example.com/UserService?wsdl", :ssl => {
 
 p. While the "handsoap-documentation":http://wiki.github.com/unwire/handsoap/authentication states that support for SSL is not yet implemented, there might be the chance to enable it through the use of the http-diver.
 
-h3. Sessions/Cookies
-
-p. Handsoap enables you configure the http-driver, which is curb by default. This driver is also able to work with cookies:
-
-bc.. def http_driver_instance
-  unless @driver_instance
-    @driver_instance = super
-    @driver_instance.enable_cookies = true
-  end
-  @driver_instance
-end
 
 
