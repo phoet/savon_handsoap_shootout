@@ -23,7 +23,7 @@ task :install_gems do
     info "checking availability of #{k} in version #{v}"
     if Gem.cache.find_name(k, "=#{v}").empty? 
       info "gem not found, installing #{k} #{v}"
-      exec("gem install -v=#{v} #{k}") 
+      info `gem install -v=#{v} #{k}`
     end
     require k
   end
@@ -40,25 +40,6 @@ desc "Validate SOAP endpoints"
 task :validate_endpoints do
   info "validating soap endpoints"
   Shootout.validate_endpoints!
-end
-
-desc 'Create the documentation'
-task :create_doc => :install_gems do
-  info 'creating the documentation in _site'
-  Dir.mkdir('_site') unless File.exists?('_site')
-  Dir.glob('*.textile').each do |file|
-    info "creating doc from #{file}"
-    text = File.readlines(file)
-    html = RedCloth.new(text.join).to_html
-    fname = File.basename(file, '.textile')
-    File.open("_site/#{fname}.html",'w'){|f| f.write(html) }
-  end
-end
-
-desc 'Clean the project'
-task :clean do
-  info 'cleaning the project'
-  FileUtils.rm_rf('_site') if File.exists?('_site')
 end
 
 desc "Perform a benchmark-test"
