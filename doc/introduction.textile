@@ -1,0 +1,19 @@
+h1. Savon Handsoap shootout
+
+p. Looking into "The Ruby Toolbox":http://ruby-toolbox.com/ there are currently two popuplar "SOAP-client-libraries":http://ruby-toolbox.com/ available. In this short article I am going to crunch the candidates "savon":http://github.com/rubiii/savon, which is currently the most "popular" library, and "Handsoap":http://github.com/unwire/handsoap/ which follows short after. Both are open-source-projects hosted on "github":http://github.com/.
+
+h2. Scope
+
+p. This article won't cover all facets of both libraries. It concentrates on the features that are relevant for integrating a Ruby-SOAP-client into our particular SOA-platform. That platform is commonly based on Java-SOAP-frameworks such as "CXF":http://cxf.apache.org/ and "Axis":http://ws.apache.org/axis/ providing interfaces to internal business-logic.
+
+p. Since this is not a complete feature-list, it should show you at least how to work with the APIs and which client might be the best choice for yourself.
+
+h2. Features
+
+p. The requirements the SOAP-client should meet are clear. Having lots of Java-Guys around, there was no great focus on things like API-design or Ruby-magic, the client should *just work*! Living in a Java-environment, it would be a great plus for the SOAP-client to integrate with "JRuby":http://jruby.org/ _smoothly_. Since a lot of ruby-libraries lack support for JRuby, one has to monkey-patch a lot of code to make it work with the Java-Runtime.
+
+h2. Examples
+
+p. For the examples we refer to public SOAP-services, that can be used on an open basis. This enables everyone to run the examples by themselves.
+
+p. All the examples seen here can be cloned/downloaded from "github":http://github.com/rubiii/ruby_soap_client_library_shootout/.
