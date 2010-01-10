@@ -10,9 +10,8 @@ module Shootout
     class SavonStatic
       def self.run
         client = Savon::Client.new Shootout.endpoints[:bank_code][:uri]
-        client.wsdl = false
-        client.get_bank do |soap|
-          soap.namespaces["xmlns:wsdl"] = "http://thomas-bayer.com/blz/"
+        client.get_bank! do |soap|
+          soap.namespace = "http://thomas-bayer.com/blz/"
           soap.body = { "wsdl:blz" => "24050110" }
         end
       end

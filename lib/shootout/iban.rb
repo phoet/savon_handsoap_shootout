@@ -3,10 +3,10 @@ module Shootout
     def self.validate(iban)
       client = Savon::Client.new Shootout.endpoints[:iban][:uri]
       response = client.ibanvalidate do |soap|
-        soap.namespaces["xmlns:wsdl"] = "urn:freeservices"
+        soap.namespace = "urn:freeservices"
         soap.body = { :params => iban }
       end
-      response.to_hash[:validate_result]
+      response.to_hash[:ibanvalidate_response][:validate_result]
     end
   end
 

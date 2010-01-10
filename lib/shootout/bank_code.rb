@@ -3,7 +3,7 @@ module Shootout
     def self.zip_code(bank_code)
       client = Savon::Client.new Shootout.endpoints[:bank_code][:uri]
       response = client.get_bank { |soap| soap.body = { "wsdl:blz" => bank_code } }
-      response.to_hash[:details][:plz]
+      response.to_hash[:get_bank_response][:details][:plz]
     end
   end
 

@@ -6,7 +6,7 @@ module Shootout
         soap.version = 2
         soap.body = { "wsdl:FromCurrency" => from, "wsdl:ToCurrency" => to }
       end
-      response.to_hash[:conversion_rate_result]
+      response.to_hash[:conversion_rate_response][:conversion_rate_result]
     end
   end
 
