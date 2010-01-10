@@ -1,16 +1,14 @@
 h2. Accessing a WSDL
 
-p. Both clients provide an interface to work with a wsdl. While handsoap wsdl-support is hidden in some helper-class, wsdls are a first-class citizen in savon. The code for printing out the available SOAP-actions looks like this:
+p. Both clients provide an interface to work with a WSDL. While the Handsoap wsdl support is hidden in some helper class, WSDLs are a first class citizen in Savon. The code for printing out the available SOAP actions looks like this:
 
-bc.. # using handsoap
-require "handsoap/parser"
+bc.. require "handsoap/parser"
 wsdl = Handsoap::Parser::Wsdl.read(@wsdl_uri)
 wsdl.bindings.each {|binding| binding.actions.each{|action| p action.name }}
 
-# using savon
 p Savon::Client.new("some_wsdl").wsdl.soap_actions
 
-p. The handsoap-parser-class is part of the Rails generator. The generator can be used for creating a Handsoap service class skeleton and tests.
+p. The Handsoap parser class is part of a Rails generator. The generator can be used for creating a Handsoap service class skeleton and tests:
 
 bc.. $ script/generate handsoap http://www.thomas-bayer.com/axis2/services/BLZService?wsdl
 

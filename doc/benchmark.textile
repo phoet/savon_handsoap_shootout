@@ -1,19 +1,19 @@
 h2. Benchmark
 
-p. As every benchmark is only as good as the platform it is run on, everyone should execute them on their own machine. This is as simple as executing a rake-task:
+p. As every benchmark is only as good as the platform it is run on, everyone should execute them on their own machine. This is as simple as executing a rake task:
 
 bc.. $ rake benchmark
 
-p. Running the benchmarks on the local development-machine (MacBook 2.4GH Intel Core 2 Duo) produces these results:
+p. Running the benchmarks on my local development machine (MacBook 2.4GH Intel Core 2 Duo) produces these results:
 
 bc..                                     user     system      total        real
 savon dynamic                   0.390000   0.070000   0.460000 ( 17.860459)
 savon static                    0.120000   0.040000   0.160000 ( 11.929432)
 handsoap                        0.100000   0.020000   0.120000 (  3.962274)
 
-p. Since handsoap uses native C-Libraries like "curb":http://curb.rubyforge.org and "nokogiri":http://github.com/tenderlove/nokogiri/ the produced results are not that surprising. Savon on the other hand is a pure Ruby implementation with only a small set of dependencies.
+p. Since Handsoap uses native C libraries like "curb":http://curb.rubyforge.org and "nokogiri":http://github.com/tenderlove/nokogiri/ the produced results are not that surprising. Savon on the other hand is a pure Ruby implementation with only a small set of dependencies.
 
-p. Handsoap offers a way to change the underlying gems to work with HTTP and XML-parsing. There are some more benchmarks for these configurations:
+p. Handsoap offers a way to change the underlying gems to work with HTTP and XML parsing. There are some more benchmarks for these configurations:
 
 bc..                                      user     system      total        real
 handsoap curb nokogiri          0.100000   0.020000   0.120000 (  3.962274)

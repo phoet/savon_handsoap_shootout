@@ -1,6 +1,6 @@
 h2. Calling a service
 
-p. The two libraries have different approaches on how to get things done. While Handsoap is using an oldschool inheritance-style definition
+p. The two libraries have different approaches on how to get things done. While Handsoap is using an oldschool inheritance style definition
 
 bc.. class HandsoapBankCode < Handsoap::Service
   
@@ -18,13 +18,13 @@ bc.. class HandsoapBankCode < Handsoap::Service
   [...]
 end
 
-p. savon-clients are just a kind of wrapper or proxy around a WSDL:
+p. Savon clients are just a kind of wrapper or proxy around a WSDL:
 
 bc.. client = Savon::Client.new "some_wsdl"
 
-p. While inheritance is a base concept of object-oriented-programming, it's usually good to avoid it and using delegation instead. For not being stuck on the API of the _Handsoap::Service_ class, one would usually wrap things up into some other Class or Module, creating more code than neccessary. 
+p. While inheritance is a base concept of object oriented programming, it's usually better to use delegation instead. For not being stuck on the API of the Handsoap::Service class, one would wrap things up into some other class or module, creating more code than necessary. 
 
-p. The proxy-style-client of savon is less code and provides are more flexibility API, especially when it comes to terms of SOAP-calls.
+p. The proxy style client of Savon is less code and provides a flexible API, especially looking at SOAP calls.
 
 p. Using "rspec":http://rspec.info/ to demonstrate the expected bahavior of the clients 
 
@@ -42,11 +42,11 @@ describe "Handsoap" do
   end
 end
 
-p. results in two nearly identical specs for getting a _zip_code_ of a concrete client-implementation.
+p. results in two identical specs for getting a zip_code of a concrete client implementation.
 
-p. Compared to the spec, the code of the two implementations differs a great deal. The task at hand is to call the _getBank_ method of the "SOAP-endpoint":http://www.thomas-bayer.com/axis2/services/BLZService?wsdl providing a _blz_ (bank-code) parameter and extracting the _plz_ (the zip-code) value of the response. 
+p. Compared to the spec, the code of the two implementations differs a great deal. The task at hand is to call the  getBank  method of the "SOAP endpoint":http://www.thomas-bayer.com/axis2/services/BLZService?wsdl providing a blz (bank code) parameter and extracting the plz (the zip code) value of the response. 
 
-p. Using the handsoap-client-class defined above, sending the _invoke()_ message to the _Handsoap::Service_ will do the job:
+p. Using the Handsoap client class defined above, sending the  invoke() message to the Handsoap::Service will do the job:
 
 bc.. def zip_code(bank_code)
   response = invoke("tns:getBank") do |message|
@@ -55,9 +55,9 @@ bc.. def zip_code(bank_code)
   (response/"//ns1:details/ns1:plz").first.to_s
 end
 
-p. The _bank_code_ parameter is assigned in the block, which yields a "SOAP-message-object":http://github.com/unwire/handsoap/blob/master/lib/handsoap/xml_mason.rb. The resulting xml-document is wrapped and can be accessed using some XML-library. Handsoap lets you choose between different types of XML-parsers like "REXML":http://www.ruby-doc.org/core/classes/REXML.html, "ruby-libxml":http://libxml.rubyforge.org/ or "nokogiri":http://github.com/tenderlove/nokogiri.
+p. The bank_code parameter is assigned in the block, which yields a "SOAP message object":http://github.com/unwire/handsoap/blob/master/lib/handsoap/xml_mason.rb. The resulting XML document is wrapped and can be accessed using some predefined XML library. Handsoap enables you to choose between different types of XML parsers like "REXML":http://www.ruby-doc.org/core/classes/REXML.html, "ruby-libxml":http://libxml.rubyforge.org/ or "nokogiri":http://github.com/tenderlove/nokogiri.
 
-p. Savons proxy-client on the other hand is dynamic and can be accessed directly with the name of the SOAP-method and a block:
+p. Savon's proxy client on the other hand is dynamic and can be accessed directly with the name of the SOAP method and a block:
 
 bc.. class SavonBankCode
   def self.zip_code(bank_code)
@@ -67,7 +67,4 @@ bc.. class SavonBankCode
   end
 end
 
-p. The block yields a "SOAP-request-object":http://github.com/rubiii/savon/blob/master/lib/savon/soap.rb for setting the payload or tweaking defaults like the SOAP-header. Converting the response to a hash is an easy way to access the desired result. The conversion is done by using "crack":http://github.com/jnunemaker/crack/.
-
-
-
+p. The block yields a "SOAP request object":http://github.com/rubiii/savon/blob/master/lib/savon/soap.rb for setting the payload or tweaking defaults like the SOAP header. Converting the response to a hash is an easy way to access the desired result. The conversion is done with "crack":http://github.com/jnunemaker/crack/.
