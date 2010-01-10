@@ -1,12 +1,3 @@
-require "uri"
-require "net/http"
-
-begin
-  require "colorize"
-rescue LoadError
-  puts "Install the 'colorize' gem for colorized shell output."
-end
-
 module Shootout
 
   @endpoint_error = "Unfortunately not all endpoints seem to be available!"

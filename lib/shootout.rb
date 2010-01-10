@@ -1,9 +1,18 @@
+# common
+require "colorize"
+
+# soap-libraries
 require "savon"
 require "handsoap"
 
-# Additional Handsoap dependencies
-require "curb"
-require "nokogiri"
+# additional handsoap dependencies
+#require "curb"
+#require "nokogiri"
+
+# stuff for endpoint-checks
+require "uri"
+require "net/http"
+
 
 # Disable logging
 Savon::Request.log = false

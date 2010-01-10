@@ -7,27 +7,13 @@ require 'logger'
 include FileUtils
 
 LOGGER = Logger.new(STDOUT)
-gems = {'savon' => '0.6.7', 'handsoap' => '1.1.4', 'RedCloth' => '4.2.2'}
 
 def info(message)
   LOGGER.info message
 end
 
 task :default => :spec
-task :spec => :install_gems
 task :spec => :validate_endpoints
-
-desc 'installs all the gems'
-task :install_gems do
-  gems.each do |k, v|
-    info "checking availability of #{k} in version #{v}"
-    if Gem.cache.find_name(k, "=#{v}").empty? 
-      info "gem not found, installing #{k} #{v}"
-      info `gem install -v=#{v} #{k}`
-    end
-    require k
-  end
-end
 
 # configure rspec
 Spec::Rake::SpecTask.new do |spec|
