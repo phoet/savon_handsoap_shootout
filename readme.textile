@@ -2,6 +2,17 @@ h1. Savon Handsoap Shootout
 
 p. This is a technical article on two popular SOAP clients Savon (http://github.com/rubiii/savon) and Handsoap (http://github.com/unwire/handsoap/).
 
+p. The article is splitted into several separate files you find in the "doc" folder:
+
+* introduction
+* calling_a_service
+* accessing_a_wsdl
+* authentication
+* errors
+* jruby
+* benchmark
+* conclusion
+
 p. If you want to execute the examples, there are some rake tasks for your convenience:
 
 bc.. # show all rake tasks
@@ -9,7 +20,7 @@ rake -T
 
 h2. Which versions are being compared?
 
-p. We try to always compare the latest versions of both libraries. Right now we use: *Savon 0.7.1* and *Handsoap 1.1.4* running on *Ruby 1.8.6* and *JRuby 1.4.0*.
+p. We try to always compare the latest versions of both libraries. Right now we use: *Savon 0.7.1* and *Handsoap 1.1.4* running on *Ruby 1.8.7* and *JRuby 1.4.0*.
 
 h2. Getting started
 
@@ -33,4 +44,4 @@ p. If you own or know about a public SOAP service that we could use, please get 
 
 h2. Problems?
 
-p. In case of a LoadError, please make sure *Rubygems* is used (see http://gist.github.com/54177).
+p. In case of a *LoadError*, please make sure *Rubygems* is used (see http://gist.github.com/54177).

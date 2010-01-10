@@ -1,6 +1,6 @@
 h2. JRuby
 
-p. First of all, both client-implementations can be run using JRuby. Since Savon is a pure Ruby implementation you get JRuby support for free. The drawback is, that it's slow on MRI. Using native C-Libraries by default, Handsoap is bleezing fast. But when it comes to terms of compatibility with JRuby you've got to fall back to core Ruby classes:
+p. First of all, both client implementations can be run using JRuby. Since Savon is a pure Ruby implementation you get JRuby support for free. The drawback is, that it's slow on MRI. Using native C Libraries by default, Handsoap is bleezing fast. But when it comes to terms of compatibility with JRuby you've got to fall back to core Ruby classes:
 
 bc.. Handsoap.http_driver = :net_http
 Handsoap.xml_query_driver = :rexml
