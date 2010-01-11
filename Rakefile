@@ -28,13 +28,13 @@ task :validate_endpoints do
   Shootout.validate_endpoints!
 end
 
-desc "Perform a benchmark-test"
+desc "Perform a benchmark test"
 task :benchmark do
-  info "performing a benchmark-test"
+  info "performing a benchmark test"
   require "benchmark"
   xml_parsers = [:rexml, :nokogiri, :libxml]
   http_drivers = [:curb, :httpclient, :net_http] # :event_machine, seems not to work properly
-  
+
   Benchmark.bm(30) do |x|
     x.report("savon dynamic") do
       25.times { Shootout::Benchmark::SavonDynamic.run }
@@ -50,6 +50,26 @@ task :benchmark do
           25.times { Shootout::Benchmark::Handsoap.run }
         end 
       end
+    end
+  end
+end
+
+desc "Perform a JRuby benchmark test"
+task :benchmark_jruby do
+  info "performing a JRuby benchmark test"
+  info "should be perfomed with jruby"
+  require "benchmark"
+  Benchmark.bm(30) do |x|
+    x.report("savon jruby dynamic") do
+      25.times { Shootout::Benchmark::SavonDynamic.run }
+    end
+    x.report("savon jruby static") do
+      25.times { Shootout::Benchmark::SavonStatic.run }
+    end
+    x.report("handsoap jruby") do
+      Handsoap.http_driver = :net_http
+      Handsoap.xml_query_driver = :rexml
+      25.times { Shootout::Benchmark::Handsoap.run }
     end
   end
 end
