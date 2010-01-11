@@ -23,11 +23,15 @@ end
 
 h3. HTTP authentication
 
-p. The same approach is used by Handsoap to offer HTTP authentication, while Savon currently "lacks support":http://github.com/rubiii/savon/issues#issue/15 for this simple task.
+p. The same approach is used by Handsoap to offer HTTP authentication:
 
 bc.. def on_after_create_http_request(http_request)
     http_request.set_auth @@username, @@password
   end
+
+p. Savon provides support for this feature "just yet":http://github.com/rubiii/savon/issues#issue/15 (since 0.7.0):
+
+bc.. client.request.basic_auth "username", "password"
 
 h3. SSL support
 
