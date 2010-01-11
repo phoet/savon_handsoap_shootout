@@ -1,9 +1,0 @@
-h2. Conclusion
-
-p. The dynamic coding style of Savon is more elegant and the Ruby magic makes it easy to use. Calling SOAP services is now a fun task.
-
-p. Handsoap makes a good job on encapsulating SOAP calls and provides a wide spectrum of configuration points. It's very fast on MRI and one has complete control over the XML and transport layer.
-
-p. Even though I am a Java guy I love the Savon approach to SOAP, especially because it completely eliminates the XML part!
-
-p. Many thanx to "rubiii":http://github.com/rubiii/ for helping with the examples!
