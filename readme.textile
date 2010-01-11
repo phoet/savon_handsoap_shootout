@@ -1,17 +1,6 @@
 h1. Savon Handsoap Shootout
 
-p. This is a technical article on two popular SOAP clients Savon (http://github.com/rubiii/savon) and Handsoap (http://github.com/unwire/handsoap/).
-
-p. The article is splitted into several separate files you find in the "doc" folder:
-
-* introduction
-* calling_a_service
-* accessing_a_wsdl
-* authentication
-* errors
-* jruby
-* benchmark
-* conclusion
+p. This is the code repository for a "technical article":http://blog.nofail.de/2010/01/savon-handsoap-shootout/ on two popular SOAP clients "Savon":http://github.com/rubiii/savon and "Handsoap":http://github.com/unwire/handsoap/.
 
 p. If you want to execute the examples, there are some rake tasks for your convenience:
 
