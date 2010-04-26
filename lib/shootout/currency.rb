@@ -1,4 +1,12 @@
 module Shootout
+  class Soap4rCurrency
+    def self.conversion_rate(from, to)
+       driver = SOAP::WSDLDriverFactory.new(Shootout.endpoints[:currency][:uri]).create_rpc_driver
+       result = driver.ConversionRate("FromCurrency" => from, "ToCurrency" => to)
+       result["ConversionRateResult"]
+    end
+  end
+  
   class SavonCurrency
     def self.conversion_rate(from, to)
       client = Savon::Client.new Shootout.endpoints[:currency][:uri]

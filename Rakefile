@@ -2,7 +2,7 @@ $:.unshift File.join(File.dirname(__FILE__), "lib")
 
 require "spec/rake/spectask"
 require "shootout"
-require 'logger'
+require "logger"
 
 include FileUtils
 

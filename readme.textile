@@ -1,36 +1,45 @@
 h1. Savon Handsoap Shootout
 
-p. This is the code repository for a "technical article":http://blog.nofail.de/2010/01/savon-handsoap-shootout/ on two popular SOAP clients "Savon":http://github.com/rubiii/savon and "Handsoap":http://github.com/unwire/handsoap/.
+This is the code repository for a "technical article":http://blog.nofail.de/2010/01/savon-handsoap-shootout/ on two popular SOAP clients "Savon":http://github.com/rubiii/savon and "Handsoap":http://github.com/unwire/handsoap/.
 
-p. If you want to execute the examples, there are some rake tasks for your convenience:
-
-bc.. # show all rake tasks
-rake -T
+You should have "RVM":http://blog.nofail.de/2010/01/xruby-on-the-mac/ installed for the different examples.
 
 h2. Which versions are being compared?
 
-p. We try to always compare the latest versions of both libraries. Right now we use: *Savon 0.7.1* and *Handsoap 1.1.4* running on *Ruby 1.8.7* and *JRuby 1.4.0*.
+We try to always compare the latest versions of both libraries. Right now we use: *Savon 0.7.6* and *Handsoap 1.1.7* and *Soap4r* running on *Ruby 1.8.7* and *JRuby 1.4.0*.
 
 h2. Getting started
 
-p. "Download":http://github.com/phoet/savon_handsoap_shootout/archives/master or clone the repository via:
+"Download":http://github.com/phoet/savon_handsoap_shootout/archives/master or clone the repository via:
 
-bc. git clone git://github.com/phoet/savon_handsoap_shootout.git
+<pre>
+git clone git://github.com/phoet/savon_handsoap_shootout.git
+</pre>
 
-h2. Requirements
+This example needs *rake*, *rspec* and some more gems. You can install them with the provided script:
 
-p. This example needs *rake*, *rspec* and some more gems. You can install them with the provided script:
+<pre>
+rvm use 1.8.7
+ruby install.rb
+</pre>
 
-bc. ruby install.rb
 
 h2. How to use
 
-p. Run rake to execute the specifications. The default rake task executing the specs will exit unless all public SOAP services are available. Look at the examples comparing the use of Savon and Handsoap in the "lib/shootout" folder.
+If you want to execute the examples, there are some rake tasks for your convenience:
+
+<pre>
+# show all rake tasks
+rake -T
+</pre>
+
+
+Run rake to execute the specifications. The default rake task executing the specs will exit unless all public SOAP services are available. Look at the examples comparing the use of Savon and Handsoap in the "lib/shootout" folder.
 
 h2. How to help
 
-p. If you own or know about a public SOAP service that we could use, please get in touch.
+If you own or know about a public SOAP service that we could use, please get in touch.
 
 h2. Problems?
 
-p. In case of a *LoadError*, please make sure *Rubygems* is used (see http://gist.github.com/54177).
+In case of a *LoadError*, please make sure *Rubygems* is used (see http://gist.github.com/54177).

@@ -1,9 +1,8 @@
-# common
-require "colorize"
-
 # soap-libraries
 require "savon"
 require "handsoap"
+require "soap/rpc/driver"
+require "soap/wsdlDriver"
 
 # additional handsoap dependencies
 #require "curb"

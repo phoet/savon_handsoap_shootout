@@ -14,7 +14,7 @@ module Shootout
 
   def self.validate_endpoints!
     return if @endpoints.all? { |name, details| endpoint_available? details[:uri] }
-    puts @endpoint_error.red rescue puts @endpoint_error
+    puts @endpoint_error rescue puts @endpoint_error
     exit
   end
 
