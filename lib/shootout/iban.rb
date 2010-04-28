@@ -1,12 +1,11 @@
 module Shootout
   class Soap4rIBAN
     def self.validate(iban)
-       driver = SOAP::WSDLDriverFactory.new(Shootout.endpoints[:iban][:uri]).create_rpc_driver
-       result = driver.ibanvalidate("params" => iban)
-       result
+      driver = SOAP::WSDLDriverFactory.new(Shootout.endpoints[:iban][:uri]).create_rpc_driver
+      driver.ibanvalidate(iban)
     end
   end
-  
+
   class SavonIBAN
     def self.validate(iban)
       client = Savon::Client.new Shootout.endpoints[:iban][:uri]
