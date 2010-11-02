@@ -6,8 +6,7 @@ You should have "RVM":http://blog.nofail.de/2010/01/xruby-on-the-mac/ installed 
 
 h2. Which versions are being compared?
 
-We try to always compare the latest versions of both libraries.
-Right now we use: *Savon 0.7.6* and *Handsoap 1.1.7* and *Soap4r* running on *Ruby 1.8.7* and *JRuby 1.5.2*.
+We try to always compare the latest versions of both libraries. Right now we use: *Savon 0.7.6* and *Handsoap 1.1.7* and *Soap4r* running on *Ruby 1.8.7* and *JRuby 1.5.2*.
 
 h2. Getting started
 
@@ -42,9 +41,7 @@ If you want to execute the examples, there are some rake tasks for your convenie
 rake -T
 </pre>
 
-Run rake to execute the specifications. 
-The default rake task executing the specs will exit unless all public SOAP services are available.
-Look at the examples comparing the use of Savon and Handsoap in the "lib/shootout" folder.
+Run rake to execute the specifications. The default rake task executing the specs will exit unless all public SOAP services are available. Look at the examples comparing the use of Savon and Handsoap in the "lib/shootout" folder.
 
 h2. How to help
 
