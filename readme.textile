@@ -16,7 +16,7 @@ h2. Getting started
 git clone git://github.com/phoet/savon_handsoap_shootout.git
 </pre>
 
-You can install all dependencies with "Bundler":http://gembundler.com/ them with the provided script:
+You can install all dependencies with "Bundler":http://gembundler.com/:
 
 <pre>
 rvm use 1.8.7@savon_handsoap_shootout --create
@@ -51,4 +51,4 @@ If you own or know about a public SOAP service that we could use, please get in 
 
 h2. Problems?
 
-In case of a *LoadError*, please make sure *Rubygems* is used (see http://gist.github.com/54177).
+In case of a *LoadError*, please "make sure Rubygems is used":http://gist.github.com/54177.
