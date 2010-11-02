@@ -6,7 +6,8 @@ You should have "RVM":http://blog.nofail.de/2010/01/xruby-on-the-mac/ installed 
 
 h2. Which versions are being compared?
 
-We try to always compare the latest versions of both libraries. Right now we use: *Savon 0.7.6* and *Handsoap 1.1.7* and *Soap4r* running on *Ruby 1.8.7* and *JRuby 1.4.0*.
+We try to always compare the latest versions of both libraries.
+Right now we use: *Savon 0.7.6* and *Handsoap 1.1.7* and *Soap4r* running on *Ruby 1.8.7* and *JRuby 1.5.2*.
 
 h2. Getting started
 
