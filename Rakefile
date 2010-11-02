@@ -25,7 +25,10 @@ end
 desc "Validate SOAP endpoints"
 task :validate_endpoints do
   info "validating soap endpoints"
-  Shootout.validate_endpoints!
+  Shootout.endpoints.each do |name, details|
+    LOGGER.debug "validating #{name} with details #{details.inspect}"
+    LOGGER.debug "#{name} is not available" unless Shootout.endpoint_available?(details[:uri])
+  end
 end
 
 desc "Perform a benchmark test"

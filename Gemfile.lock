@@ -1,0 +1,42 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    builder (2.1.2)
+    crack (0.1.8)
+    curb (0.7.8)
+    diff-lcs (1.1.2)
+    handsoap (1.1.7)
+    httpclient (2.1.5.2)
+    libxml-ruby (1.1.4)
+    nokogiri (1.4.3.1)
+    nokogiri (1.4.3.1-java)
+      weakling (>= 0.0.3)
+    rake (0.8.7)
+    rspec (2.0.1)
+      rspec-core (~> 2.0.1)
+      rspec-expectations (~> 2.0.1)
+      rspec-mocks (~> 2.0.1)
+    rspec-core (2.0.1)
+    rspec-expectations (2.0.1)
+      diff-lcs (>= 1.1.2)
+    rspec-mocks (2.0.1)
+      rspec-core (~> 2.0.1)
+      rspec-expectations (~> 2.0.1)
+    savon (0.7.6)
+      builder (>= 2.1.2)
+      crack (>= 0.1.4)
+    weakling (0.0.4-java)
+
+PLATFORMS
+  java
+  ruby
+
+DEPENDENCIES
+  curb
+  handsoap (= 1.1.7)
+  httpclient
+  libxml-ruby
+  nokogiri
+  rake
+  rspec
+  savon (= 0.7.6)
