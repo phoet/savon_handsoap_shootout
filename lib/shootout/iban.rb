@@ -8,11 +8,15 @@ module Shootout
 
   class SavonIBAN
     def self.validate(iban)
-      client = Savon::Client.new Shootout.endpoints[:iban][:uri]
-      response = client.ibanvalidate do |soap|
-        soap.namespace = "urn:freeservices"
+      client = Savon::Client.new do
+        wsdl.document = Shootout.endpoints[:iban][:uri]
+      end
+      
+      response = client.request :urn, :ibanvalidate do |soap|
+        soap.namespaces["xmlns:urn"] = Shootout.endpoints[:iban][:namespace]
         soap.body = { :params => iban }
       end
+
       response.to_hash[:ibanvalidate_response][:validate_result]
     end
   end
@@ -21,11 +25,11 @@ module Shootout
     endpoint :uri => "https://www.unifiedsoftware.co.uk/cgi-bin/freeservicedispatcher.cgi", :version => 1
 
     def on_create_document(doc)
-      doc.alias "urn", "urn:freeservices"
+      doc.alias "urn", Shootout.endpoints[:iban][:namespace]
     end
 
     def on_response_document(doc)
-      doc.add_namespace "ns1", "urn:freeservices"
+      doc.add_namespace "ns1", Shootout.endpoints[:iban][:namespace]
     end
 
     def validate(iban)

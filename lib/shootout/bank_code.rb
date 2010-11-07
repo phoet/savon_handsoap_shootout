@@ -9,8 +9,10 @@ module Shootout
   
   class SavonBankCode
     def self.zip_code(bank_code)
-      client = Savon::Client.new Shootout.endpoints[:bank_code][:uri]
-      response = client.get_bank { |soap| soap.body = { "wsdl:blz" => bank_code } }
+      client = Savon::Client.new do |wsdl|
+        wsdl.document = Shootout.endpoints[:bank_code][:uri]
+      end
+      response = client.request('wsdl:getBank'){ soap.body = {"wsdl:blz" => bank_code} }
       response.to_hash[:get_bank_response][:details][:plz]
     end
   end
@@ -19,11 +21,11 @@ module Shootout
     endpoint Shootout.endpoints[:bank_code]
 
     def on_create_document(doc)
-      doc.alias "tns", "http://thomas-bayer.com/blz/"
+      doc.alias "tns",  Shootout.endpoints[:bank_code][:namespace]
     end
 
     def on_response_document(doc)
-      doc.add_namespace "ns1", "http://thomas-bayer.com/blz/"
+      doc.add_namespace "ns1",  Shootout.endpoints[:bank_code][:namespace]
     end
 
     def zip_code(bank_code)

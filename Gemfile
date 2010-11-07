@@ -4,7 +4,7 @@ require 'logger'
 
 gem 'rake'
 gem 'rspec'
-gem 'savon', '0.7.6'
+gem 'savon', '0.8.0.beta.3'
 gem 'handsoap', '1.1.7'
 gem 'nokogiri'
 gem 'httpclient'

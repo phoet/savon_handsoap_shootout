@@ -9,10 +9,11 @@ require "nokogiri"
 require "uri"
 require "net/http"
 
-
-# Disable logging
-Savon::Request.log = false
-#Handsoap::Service.logger = $stdout
+# Some configuration
+Savon.configure do |config|
+  config.log = false
+end
+# Handsoap::Service.logger = $stdout
 Handsoap.http_driver = :httpclient
 
 require "shootout/shootout"

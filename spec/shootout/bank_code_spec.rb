@@ -5,7 +5,7 @@ describe "bank_code" do
 
   [Shootout::SavonBankCode, Shootout::SavonBankCode, Shootout::HandsoapBankCode].each do |clazz|
     describe "#{clazz} for zip" do
-      it "should return the corrent zip code for a given bank" do
+      it "should return the corrent zip code for a given bank for #{clazz}" do
         zip_code = clazz.zip_code @bank_code
         zip_code.should eql @zip_code
       end
