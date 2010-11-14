@@ -1,6 +1,5 @@
 $:.unshift File.join(File.dirname(__FILE__), "lib")
 
-require "spec/rake/spectask"
 require "shootout"
 require "logger"
 
@@ -15,11 +14,10 @@ end
 task :default => :spec
 task :spec => :validate_endpoints
 
-# configure rspec
-Spec::Rake::SpecTask.new do |spec|
-  spec.spec_files = FileList["spec/**/*_spec.rb"]
-  spec.spec_opts << "--color"
-  spec.libs += ["lib", "spec"]
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new do |t|
+  t.rspec_opts = ["-c", "-f progress", "-r ./spec/spec_helper.rb"]
+  t.pattern = 'spec/**/*_spec.rb'
 end
 
 desc "Validate SOAP endpoints"
