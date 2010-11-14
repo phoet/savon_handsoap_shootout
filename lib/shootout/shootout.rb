@@ -11,6 +11,11 @@ module Shootout
       :version => 1,
       :namespace => "urn:freeservices",
     },
+    :bushism => {
+      :uri => "http://greg.froh.ca/fun/random_bushism/soap/index.php?wsdl",
+      :version => 1,
+      :namespace => "urn:RandomBushism"
+    }
   }
 
   def self.endpoints

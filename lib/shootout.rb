@@ -19,4 +19,5 @@ Handsoap.http_driver = :httpclient
 require "shootout/shootout"
 require "shootout/bank_code"
 require "shootout/iban"
+require "shootout/bushism"
 require "benchmark/benchmark"
