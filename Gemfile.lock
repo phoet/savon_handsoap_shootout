@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     builder (2.1.2)
+    columnize (0.3.2)
     crack (0.1.8)
     curb (0.7.8)
     diff-lcs (1.1.2)
@@ -9,6 +10,7 @@ GEM
     httpclient (2.1.5.2)
     httpi (0.6.1)
     libxml-ruby (1.1.4)
+    linecache (0.43)
     nokogiri (1.4.3.1)
     nokogiri (1.4.3.1-java)
       weakling (>= 0.0.3)
@@ -23,6 +25,11 @@ GEM
     rspec-mocks (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
     savon (0.8.0.beta.3)
       builder (~> 2.1.2)
       crack (~> 0.1.8)
@@ -41,4 +48,5 @@ DEPENDENCIES
   nokogiri
   rake
   rspec
+  ruby-debug
   savon (= 0.8.0.beta.3)

@@ -13,3 +13,7 @@ group :no_jruby do
   gem 'curb'
   gem 'libxml-ruby'
 end
+
+group :test do
+  gem 'ruby-debug'
+end
