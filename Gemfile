@@ -1,7 +1,5 @@
 source :gemcutter
 
-require 'logger'
-
 gem 'rake'
 gem 'rspec'
 gem 'savon', '0.8.0.beta.3'

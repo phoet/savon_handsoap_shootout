@@ -32,6 +32,10 @@ gem install bundler
 bundle install --without=no_jruby
 </pre>
 
+h3. Ruby 1.9
+
+There are some problems with SOAP4R and Ruby 1.9 so this is not within the scope of this project.
+
 h2. How to use
 
 If you want to execute the examples, there are some rake tasks for your convenience:

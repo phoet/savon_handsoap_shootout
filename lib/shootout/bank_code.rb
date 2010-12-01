@@ -3,7 +3,7 @@ module Shootout
     def self.zip_code(bank_code)
        driver = SOAP::WSDLDriverFactory.new(Shootout.endpoints[:bank_code][:uri]).create_rpc_driver
        result = driver.getBank("blz" => bank_code)
-       result["details"]["plz"]
+       result.details.plz
     end
   end
   

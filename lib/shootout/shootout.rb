@@ -15,6 +15,11 @@ module Shootout
       :uri => "http://greg.froh.ca/fun/random_bushism/soap/index.php?wsdl",
       :version => 1,
       :namespace => "urn:RandomBushism"
+    },
+    :geoip => {
+      :uri => "http://www.webservicex.net/geoipservice.asmx?wsdl",
+      :version => 2,
+      :namespace => "http://www.webservicex.net/"
     }
   }
 
